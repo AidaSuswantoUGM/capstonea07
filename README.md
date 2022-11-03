@@ -1,7 +1,7 @@
 WEMOS D1 R1 Code for Capstone A07 2022
 ================
 
-##Library used
+## Library used
 | Library    | Description |
 |------------|-------------|
 | [ESP8266](https://github.com/esp8266/Arduino) | Make Arduino IDE can program the WEMOS use the WiFi |
