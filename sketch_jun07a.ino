@@ -1,4 +1,4 @@
-#include <SoftwareSerial.h>
+#include<SoftwareSerial.h>
 #include<PZEM004Tv30.h>
 #include<ESP8266WiFi.h>
 #include<FirebaseArduino.h>
@@ -8,8 +8,8 @@
 #define FIREBASE_HOST "capstonea07-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "z2LkpOQOm2qjaP1s8h2BPggQq9T9twBwNzSILnAi"
 
-#define PZEM_RX_PIN D5
-#define PZEM_TX_PIN D6
+//#define PZEM_RX_PIN D5
+//#define PZEM_TX_PIN D6
 
 //char ssid[] = "UGM-Secure";
 //char username[] = "suswanto.aida";
@@ -18,9 +18,14 @@
 //uint8_t wemos_mac[6]={0x5c, 0xcf, 0x7f, 0xfc, 0x51, 0x80};
 
 //SoftwareSerial pzemSWSerial(PZEM_RX_PIN, PZEM_TX_PIN);
-SoftwareSerial pzemserial(D5, D6);
+SoftwareSerial pzemserial1(D2, D3);
+SoftwareSerial pzemserial2(D4, D5);
+SoftwareSerial pzemserial3(D6, D7);
+SoftwareSerial pzemserial4(D9, D10);
 //PZEM004Tv30 pzem(PZEM_RX_PIN, PZEM_TX_PIN, 0x02);
-PZEM004Tv30 pzem;
+PZEM004Tv30 pzem1,pzem2,pzem3,pzem4;
+
+
 
 void firebaseerror(){
   Serial.println(Firebase.error());
@@ -63,42 +68,81 @@ void setup() {
   }
   Serial.println(WiFi.localIP());
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(D11, INPUT);
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   if(Firebase.failed()){
     firebaseerror();}
   digitalWrite(LED_BUILTIN, LOW);
-  pzem=PZEM004Tv30(pzemserial,0x01);
+  pzem1=PZEM004Tv30(pzemserial1,0x11);
+  pzem2=PZEM004Tv30(pzemserial2,0x12);
+  pzem3=PZEM004Tv30(pzemserial3,0x13);
+  pzem4=PZEM004Tv30(pzemserial4,0x14);
   //Serial.println(WiFi.macAddress());
 }
 //int i=0;
- 
+
+bool orang;
+
 void loop() {
-  Serial.println(pzem.readAddress(), HEX);
-  float teg=pzem.voltage();
-  Serial.println(teg);
-  if(isnan(teg)){
-    teg=0;
+  float daya1=pzem1.power();
+  if(isnan(daya1)){
+    daya1=0;
   }
-  float arus=pzem.current();
-  Serial.println(teg);
-  if(isnan(arus)){
-    arus=0;
+  float daya2=pzem2.power();
+  if(isnan(daya2)){
+    daya2=0;
   }
-  float daya=pzem.power();
-  if(isnan(daya)){
-    daya=0;
+  float daya3=pzem3.power();
+  if(isnan(daya3)){
+    daya3=0;
   }
-  Firebase.setInt("teg1", teg);
-  if(Firebase.failed()){
-    firebaseerror();
+  float daya4=pzem4.power();
+  if(isnan(daya4)){
+    daya4=0;
   }
-  Firebase.setInt("arus1", arus*1000);
-  if(Firebase.failed()){
-    firebaseerror();
+  if(digitalRead(D11)==HIGH){
+    Firebase.setBool("users/budi/adaorang", true);
+    orang=true;
   }
-  Firebase.setInt("daya1", daya);
-  if(Firebase.failed()){
-    firebaseerror();
+  else{
+    Firebase.setBool("users/budi/adaorang", false);
+    orang=false;
+  }
+  if(orang){
+    Firebase.setFloat("users/budi/data1/beban1/daya", daya1);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban2/daya", daya2);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban3/daya", daya3);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban4/daya", daya4);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+  }
+  else{
+    Firebase.setFloat("users/budi/data1/beban1/daya", daya1);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban2/daya", daya2);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban3/daya", daya3);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
+    Firebase.setFloat("users/budi/data1/beban4/daya", daya4);
+    if(Firebase.failed()){
+      firebaseerror();
+    }
   }
   //Firebase.setInt("arus2",12);
   //i=i+1;
