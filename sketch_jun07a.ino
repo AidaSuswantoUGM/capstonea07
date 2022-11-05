@@ -109,6 +109,30 @@ void loop() {
     orang=false;
   }
   if(orang){
+    Firebase.setFloat("users/budi/data1/beban1/menit60", Firebase.getFloat("users/budi/data1/beban1/menit50"));
+    Firebase.setFloat("users/budi/data1/beban1/menit50", Firebase.getFloat("users/budi/data1/beban1/menit40"));
+    Firebase.setFloat("users/budi/data1/beban1/menit40", Firebase.getFloat("users/budi/data1/beban1/menit30"));
+    Firebase.setFloat("users/budi/data1/beban1/menit30", Firebase.getFloat("users/budi/data1/beban1/menit20"));
+    Firebase.setFloat("users/budi/data1/beban1/menit20", Firebase.getFloat("users/budi/data1/beban1/menit10"));
+    Firebase.setFloat("users/budi/data1/beban1/menit10", Firebase.getFloat("users/budi/data1/beban1/daya"));
+    Firebase.setFloat("users/budi/data1/beban2/menit60", Firebase.getFloat("users/budi/data1/beban2/menit50"));
+    Firebase.setFloat("users/budi/data1/beban2/menit50", Firebase.getFloat("users/budi/data1/beban2/menit40"));
+    Firebase.setFloat("users/budi/data1/beban2/menit40", Firebase.getFloat("users/budi/data1/beban2/menit30"));
+    Firebase.setFloat("users/budi/data1/beban2/menit30", Firebase.getFloat("users/budi/data1/beban2/menit20"));
+    Firebase.setFloat("users/budi/data1/beban2/menit20", Firebase.getFloat("users/budi/data1/beban2/menit10"));
+    Firebase.setFloat("users/budi/data1/beban2/menit10", Firebase.getFloat("users/budi/data1/beban2/daya"));
+    Firebase.setFloat("users/budi/data1/beban3/menit60", Firebase.getFloat("users/budi/data1/beban3/menit50"));
+    Firebase.setFloat("users/budi/data1/beban3/menit50", Firebase.getFloat("users/budi/data1/beban3/menit40"));
+    Firebase.setFloat("users/budi/data1/beban3/menit40", Firebase.getFloat("users/budi/data1/beban3/menit30"));
+    Firebase.setFloat("users/budi/data1/beban3/menit30", Firebase.getFloat("users/budi/data1/beban3/menit20"));
+    Firebase.setFloat("users/budi/data1/beban3/menit20", Firebase.getFloat("users/budi/data1/beban3/menit10"));
+    Firebase.setFloat("users/budi/data1/beban3/menit10", Firebase.getFloat("users/budi/data1/beban3/daya"));
+    Firebase.setFloat("users/budi/data1/beban4/menit60", Firebase.getFloat("users/budi/data1/beban4/menit50"));
+    Firebase.setFloat("users/budi/data1/beban4/menit50", Firebase.getFloat("users/budi/data1/beban4/menit40"));
+    Firebase.setFloat("users/budi/data1/beban4/menit40", Firebase.getFloat("users/budi/data1/beban4/menit30"));
+    Firebase.setFloat("users/budi/data1/beban4/menit30", Firebase.getFloat("users/budi/data1/beban4/menit20"));
+    Firebase.setFloat("users/budi/data1/beban4/menit20", Firebase.getFloat("users/budi/data1/beban4/menit10"));
+    Firebase.setFloat("users/budi/data1/beban4/menit10", Firebase.getFloat("users/budi/data1/beban4/daya"));
     Firebase.setFloat("users/budi/data1/beban1/daya", daya1);
     if(Firebase.failed()){
       firebaseerror();
@@ -127,19 +151,43 @@ void loop() {
     }
   }
   else{
-    Firebase.setFloat("users/budi/data1/beban1/daya", daya1);
+    Firebase.setFloat("users/budi/data2/beban1/menit60", Firebase.getFloat("users/budi/data2/beban1/menit50"));
+    Firebase.setFloat("users/budi/data2/beban1/menit50", Firebase.getFloat("users/budi/data2/beban1/menit40"));
+    Firebase.setFloat("users/budi/data2/beban1/menit40", Firebase.getFloat("users/budi/data2/beban1/menit30"));
+    Firebase.setFloat("users/budi/data2/beban1/menit30", Firebase.getFloat("users/budi/data2/beban1/menit20"));
+    Firebase.setFloat("users/budi/data2/beban1/menit20", Firebase.getFloat("users/budi/data2/beban1/menit10"));
+    Firebase.setFloat("users/budi/data2/beban1/menit10", Firebase.getFloat("users/budi/data2/beban1/daya"));
+    Firebase.setFloat("users/budi/data2/beban2/menit60", Firebase.getFloat("users/budi/data2/beban2/menit50"));
+    Firebase.setFloat("users/budi/data2/beban2/menit50", Firebase.getFloat("users/budi/data2/beban2/menit40"));
+    Firebase.setFloat("users/budi/data2/beban2/menit40", Firebase.getFloat("users/budi/data2/beban2/menit30"));
+    Firebase.setFloat("users/budi/data2/beban2/menit30", Firebase.getFloat("users/budi/data2/beban2/menit20"));
+    Firebase.setFloat("users/budi/data2/beban2/menit20", Firebase.getFloat("users/budi/data2/beban2/menit10"));
+    Firebase.setFloat("users/budi/data2/beban2/menit10", Firebase.getFloat("users/budi/data2/beban2/daya"));
+    Firebase.setFloat("users/budi/data2/beban3/menit60", Firebase.getFloat("users/budi/data2/beban3/menit50"));
+    Firebase.setFloat("users/budi/data2/beban3/menit50", Firebase.getFloat("users/budi/data2/beban3/menit40"));
+    Firebase.setFloat("users/budi/data2/beban3/menit40", Firebase.getFloat("users/budi/data2/beban3/menit30"));
+    Firebase.setFloat("users/budi/data2/beban3/menit30", Firebase.getFloat("users/budi/data2/beban3/menit20"));
+    Firebase.setFloat("users/budi/data2/beban3/menit20", Firebase.getFloat("users/budi/data2/beban3/menit10"));
+    Firebase.setFloat("users/budi/data2/beban3/menit10", Firebase.getFloat("users/budi/data2/beban3/daya"));
+    Firebase.setFloat("users/budi/data2/beban4/menit60", Firebase.getFloat("users/budi/data2/beban4/menit50"));
+    Firebase.setFloat("users/budi/data2/beban4/menit50", Firebase.getFloat("users/budi/data2/beban4/menit40"));
+    Firebase.setFloat("users/budi/data2/beban4/menit40", Firebase.getFloat("users/budi/data2/beban4/menit30"));
+    Firebase.setFloat("users/budi/data2/beban4/menit30", Firebase.getFloat("users/budi/data2/beban4/menit20"));
+    Firebase.setFloat("users/budi/data2/beban4/menit20", Firebase.getFloat("users/budi/data2/beban4/menit10"));
+    Firebase.setFloat("users/budi/data2/beban4/menit10", Firebase.getFloat("users/budi/data2/beban4/daya"));
+    Firebase.setFloat("users/budi/data2/beban1/daya", daya1);
     if(Firebase.failed()){
       firebaseerror();
     }
-    Firebase.setFloat("users/budi/data1/beban2/daya", daya2);
+    Firebase.setFloat("users/budi/data2/beban2/daya", daya2);
     if(Firebase.failed()){
       firebaseerror();
     }
-    Firebase.setFloat("users/budi/data1/beban3/daya", daya3);
+    Firebase.setFloat("users/budi/data2/beban3/daya", daya3);
     if(Firebase.failed()){
       firebaseerror();
     }
-    Firebase.setFloat("users/budi/data1/beban4/daya", daya4);
+    Firebase.setFloat("users/budi/data2/beban4/daya", daya4);
     if(Firebase.failed()){
       firebaseerror();
     }
