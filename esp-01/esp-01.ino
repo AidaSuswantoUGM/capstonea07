@@ -15,16 +15,16 @@ byte dof[]={0xA0, 0x04, 0x00, 0xA4};
 byte don[]={0xA0, 0x04, 0x01, 0xA5};
 
 void setup() {
-  WiFi.begin("Kost Bu Penika 2", "setanalas");
+  WiFi.begin("asuswa", "rangertiakupaswo");
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Serial.begin(115200);
 }
 
 void loop() {
-  s1=Firebase.getBool("switch1");
-  s2=Firebase.getBool("switch2");
-  s3=Firebase.getBool("switch3");
-  s4=Firebase.getBool("switch4");
+  s1=Firebase.getBool("users/budi/data1/beban1/switch");
+  s2=Firebase.getBool("users/budi/data1/beban1/switch");
+  s3=Firebase.getBool("users/budi/data1/beban1/switch");
+  s4=Firebase.getBool("users/budi/data1/beban1/switch");
   if(s1==true){
     Serial.write(aon, sizeof(aon));
   }
