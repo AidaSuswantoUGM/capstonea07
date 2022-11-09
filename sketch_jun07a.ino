@@ -18,12 +18,15 @@
 //uint8_t wemos_mac[6]={0x5c, 0xcf, 0x7f, 0xfc, 0x51, 0x80};
 
 //SoftwareSerial pzemSWSerial(PZEM_RX_PIN, PZEM_TX_PIN);
-SoftwareSerial pzemserial1(D2, D3);
-SoftwareSerial pzemserial2(D4, D5);
-SoftwareSerial pzemserial3(D6, D7);
-SoftwareSerial pzemserial4(D9, D10);
+//SoftwareSerial pzemserial1(D2, D3);
+//SoftwareSerial pzemserial2(D4, D5);
+//SoftwareSerial pzemserial3(D6, D7);
+//SoftwareSerial pzemserial4(D10, D11);
 //PZEM004Tv30 pzem(PZEM_RX_PIN, PZEM_TX_PIN, 0x02);
-PZEM004Tv30 pzem1,pzem2,pzem3,pzem4;
+PZEM004Tv30 pzem1(D4,D5, 0x11);
+PZEM004Tv30 pzem2(D4,D5, 0x12);
+PZEM004Tv30 pzem3(D4,D5, 0x13);
+PZEM004Tv30 pzem4(D4,D5, 0x14);
 
 
 
@@ -41,7 +44,7 @@ void firebaseerror(){
 
 void setup() {
   Serial.begin(115200);
-  WiFi.begin("asuswa","rangertiakupaswo");
+  WiFi.begin("Kost Bu Penika 2","setanalas");
   //WiFi.mode(WIFI_STA);
   //wifi_set_opmode(STATION_MODE);
   //struct station_config wifi_config;
@@ -73,10 +76,10 @@ void setup() {
   if(Firebase.failed()){
     firebaseerror();}
   digitalWrite(LED_BUILTIN, LOW);
-  pzem1=PZEM004Tv30(pzemserial1,0x11);
-  pzem2=PZEM004Tv30(pzemserial2,0x12);
-  pzem3=PZEM004Tv30(pzemserial3,0x13);
-  pzem4=PZEM004Tv30(pzemserial4,0x14);
+  //pzem1=PZEM004Tv30(pzemserial1,0x11);
+  //pzem2=PZEM004Tv30(pzemserial2,0x12);
+  //pzem3=PZEM004Tv30(pzemserial3,0x13);
+  //pzem4=PZEM004Tv30(pzemserial4,0x14);
   //Serial.println(WiFi.macAddress());
 }
 //int i=0;
@@ -108,6 +111,10 @@ void loop() {
     Firebase.setBool("users/budi/adaorang", false);
     orang=false;
   }
+  Serial.println(pzem1.voltage());
+  Serial.println(pzem2.voltage());
+  Serial.println(pzem3.voltage());
+  Serial.println(pzem4.voltage());
   if(orang){
     Firebase.setFloat("users/budi/data1/beban1/menit60", Firebase.getFloat("users/budi/data1/beban1/menit50"));
     Firebase.setFloat("users/budi/data1/beban1/menit50", Firebase.getFloat("users/budi/data1/beban1/menit40"));
@@ -134,21 +141,9 @@ void loop() {
     Firebase.setFloat("users/budi/data1/beban4/menit20", Firebase.getFloat("users/budi/data1/beban4/menit10"));
     Firebase.setFloat("users/budi/data1/beban4/menit10", Firebase.getFloat("users/budi/data1/beban4/daya"));
     Firebase.setFloat("users/budi/data1/beban1/daya", daya1);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data1/beban2/daya", daya2);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data1/beban3/daya", daya3);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data1/beban4/daya", daya4);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
   }
   else{
     Firebase.setFloat("users/budi/data2/beban1/menit60", Firebase.getFloat("users/budi/data2/beban1/menit50"));
@@ -176,23 +171,12 @@ void loop() {
     Firebase.setFloat("users/budi/data2/beban4/menit20", Firebase.getFloat("users/budi/data2/beban4/menit10"));
     Firebase.setFloat("users/budi/data2/beban4/menit10", Firebase.getFloat("users/budi/data2/beban4/daya"));
     Firebase.setFloat("users/budi/data2/beban1/daya", daya1);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data2/beban2/daya", daya2);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data2/beban3/daya", daya3);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
     Firebase.setFloat("users/budi/data2/beban4/daya", daya4);
-    if(Firebase.failed()){
-      firebaseerror();
-    }
   }
   //Firebase.setInt("arus2",12);
   //i=i+1;
+  //delay(599000);//10menit
   delay(1000);
 }
