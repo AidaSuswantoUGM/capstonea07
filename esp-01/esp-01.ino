@@ -21,10 +21,10 @@ void setup() {
 }
 
 void loop() {
-  s1=Firebase.getBool("users/budi/data1/beban1/switch");
-  s2=Firebase.getBool("users/budi/data1/beban1/switch");
-  s3=Firebase.getBool("users/budi/data1/beban1/switch");
-  s4=Firebase.getBool("users/budi/data1/beban1/switch");
+  s1=Firebase.getBool("users/budi/beban1/switch");
+  s2=Firebase.getBool("users/budi/beban2/switch");
+  s3=Firebase.getBool("users/budi/beban3/switch");
+  s4=Firebase.getBool("users/budi/beban4/switch");
   if(s1==true){
     Serial.write(aon, sizeof(aon));
   }
