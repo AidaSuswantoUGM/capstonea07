@@ -29,19 +29,6 @@ PZEM004Tv30 pzem3(D4,D5, 0x13);
 PZEM004Tv30 pzem4(D4,D5, 0x14);
 
 
-
-void firebaseerror(){
-  Serial.println(Firebase.error());
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(200);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(200);
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(200);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(200);
-}
-
 void setup() {
   Serial.begin(115200);
   WiFi.begin("Kost Bu Penika 2","setanalas");
@@ -73,8 +60,6 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(D11, INPUT);
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
-  if(Firebase.failed()){
-    firebaseerror();}
   digitalWrite(LED_BUILTIN, LOW);
   //pzem1=PZEM004Tv30(pzemserial1,0x11);
   //pzem2=PZEM004Tv30(pzemserial2,0x12);
