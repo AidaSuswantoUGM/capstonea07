@@ -40,10 +40,10 @@ void loop() {
   }
   delay(400);
   if(s3==true){
-    Serial.write(con, sizeof(don));
+    Serial.write(con, sizeof(con));
   }
   if(s3==false){
-    Serial.write(cof, sizeof(dof));
+    Serial.write(cof, sizeof(cof));
   }
   delay(400);
   if(s4==true){
