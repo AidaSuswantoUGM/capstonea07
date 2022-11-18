@@ -19,12 +19,30 @@ void setup() {
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Serial.begin(115200);
 }
-
+// normally open
+// lampu nyala --> timer jalan
+// if switch = true  --> nyala (aon, bon, con, don)
+//                   --> timer jalan (read time)
 void loop() {
   s1=Firebase.getBool("users/budi/beban1/switch");
   s2=Firebase.getBool("users/budi/beban2/switch");
   s3=Firebase.getBool("users/budi/beban3/switch");
   s4=Firebase.getBool("users/budi/beban4/switch");
+  
+  // ini kode dibawah utk nentuin time nya ditaruh di penggunaan (data1) atau pemborosan (data2)
+  // adaorang = baca variabel ada orang dr firebase
+  // data = "data1" (string)
+  // if adaorang = true --> data = "data1"
+  
+  // t1 = baca data waktu di firebase "users/budi/beban1/(data1 / data 2)/time"
+  // t2 = baca data waktu di firebase "users/budi/beban2/(data1 / data 2)/time"
+  // t3 = baca data waktu di firebase "users/budi/beban3/(data1 / data 2)/time"
+  // t4 = baca data waktu di firebase "users/budi/beban4/(data1 / data 2)/time"
+  
+  // adaorang = Firebase.getBool("users/budi/adaorang")
+  // if (adaorang = true ) {// ada orang ni --> alat2 nyala normal --> wireless witch nyala
+  // AIDA AKU BIKIN FLOWCHARTNYA AJA YAK
+  
   if(s1==true){
     Serial.write(aon, sizeof(aon));
   }
