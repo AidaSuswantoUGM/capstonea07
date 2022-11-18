@@ -31,7 +31,7 @@ PZEM004Tv30 pzem4(D4,D5, 0x14);
 
 void setup() {
   Serial.begin(115200);
-  WiFi.begin("Kost Bu Penika 2","setanalas");
+  WiFi.begin("asuswa","rangertiakupaswo");
   //WiFi.mode(WIFI_STA);
   //wifi_set_opmode(STATION_MODE);
   //struct station_config wifi_config;
@@ -72,19 +72,23 @@ void setup() {
 bool orang;
 
 void loop() {
-  float daya1=pzem1.power();
+  float daya1=pzem3.power();
+  Serial.println(pzem1.voltage());
   if(isnan(daya1)){
     daya1=0;
   }
-  float daya2=pzem2.power();
+  float daya2=pzem1.power();
+  Serial.println(pzem2.voltage());
   if(isnan(daya2)){
     daya2=0;
   }
-  float daya3=pzem3.power();
+  float daya3=pzem4.power();
+  Serial.println(pzem3.voltage());
   if(isnan(daya3)){
     daya3=0;
   }
-  float daya4=pzem4.power();
+  float daya4=pzem2.power();
+  Serial.println(pzem4.voltage());
   if(isnan(daya4)){
     daya4=0;
   }
@@ -96,65 +100,61 @@ void loop() {
     Firebase.setBool("users/budi/adaorang", false);
     orang=false;
   }
-  Serial.println(pzem1.voltage());
-  Serial.println(pzem2.voltage());
-  Serial.println(pzem3.voltage());
-  Serial.println(pzem4.voltage());
   if(orang){
-    Firebase.setFloat("users/budi/beban1/data1/menit60", Firebase.getFloat("users/budi/beban1/data1/menit50"));
-    Firebase.setFloat("users/budi/beban1/data1/menit50", Firebase.getFloat("users/budi/beban1/data1/menit40"));
-    Firebase.setFloat("users/budi/beban1/data1/menit40", Firebase.getFloat("users/budi/beban1/data1/menit30"));
-    Firebase.setFloat("users/budi/beban1/data1/menit30", Firebase.getFloat("users/budi/beban1/data1/menit20"));
-    Firebase.setFloat("users/budi/beban1/data1/menit20", Firebase.getFloat("users/budi/beban1/data1/menit10"));
-    Firebase.setFloat("users/budi/beban1/data1/menit10", Firebase.getFloat("users/budi/beban1/data1/daya"));
-    Firebase.setFloat("users/budi/beban2/data1/menit60", Firebase.getFloat("users/budi/beban2/data1/menit50"));
-    Firebase.setFloat("users/budi/beban2/data1/menit50", Firebase.getFloat("users/budi/beban2/data1/menit40"));
-    Firebase.setFloat("users/budi/beban2/data1/menit40", Firebase.getFloat("users/budi/beban2/data1/menit30"));
-    Firebase.setFloat("users/budi/beban2/data1/menit30", Firebase.getFloat("users/budi/beban2/data1/menit20"));
-    Firebase.setFloat("users/budi/beban2/data1/menit20", Firebase.getFloat("users/budi/beban2/data1/menit10"));
-    Firebase.setFloat("users/budi/beban2/data1/menit10", Firebase.getFloat("users/budi/beban2/data1/daya"));
-    Firebase.setFloat("users/budi/beban3/data1/menit60", Firebase.getFloat("users/budi/beban3/data1/menit50"));
-    Firebase.setFloat("users/budi/beban3/data1/menit50", Firebase.getFloat("users/budi/beban3/data1/menit40"));
-    Firebase.setFloat("users/budi/beban3/data1/menit40", Firebase.getFloat("users/budi/beban3/data1/menit30"));
-    Firebase.setFloat("users/budi/beban3/data1/menit30", Firebase.getFloat("users/budi/beban3/data1/menit20"));
-    Firebase.setFloat("users/budi/beban3/data1/menit20", Firebase.getFloat("users/budi/beban3/data1/menit10"));
-    Firebase.setFloat("users/budi/beban3/data1/menit10", Firebase.getFloat("users/budi/beban3/data1/daya"));
-    Firebase.setFloat("users/budi/beban4/data1/menit60", Firebase.getFloat("users/budi/beban4/data1/menit50"));
-    Firebase.setFloat("users/budi/beban4/data1/menit50", Firebase.getFloat("users/budi/beban4/data1/menit40"));
-    Firebase.setFloat("users/budi/beban4/data1/menit40", Firebase.getFloat("users/budi/beban4/data1/menit30"));
-    Firebase.setFloat("users/budi/beban4/data1/menit30", Firebase.getFloat("users/budi/beban4/data1/menit20"));
-    Firebase.setFloat("users/budi/beban4/data1/menit20", Firebase.getFloat("users/budi/beban4/data1/menit10"));
-    Firebase.setFloat("users/budi/beban4/data1/menit10", Firebase.getFloat("users/budi/beban4/data1/daya"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit60", Firebase.getFloat("users/budi/beban1/data1/menit50"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit50", Firebase.getFloat("users/budi/beban1/data1/menit40"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit40", Firebase.getFloat("users/budi/beban1/data1/menit30"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit30", Firebase.getFloat("users/budi/beban1/data1/menit20"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit20", Firebase.getFloat("users/budi/beban1/data1/menit10"));
+    //Firebase.setFloat("users/budi/beban1/data1/menit10", Firebase.getFloat("users/budi/beban1/data1/daya"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit60", Firebase.getFloat("users/budi/beban2/data1/menit50"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit50", Firebase.getFloat("users/budi/beban2/data1/menit40"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit40", Firebase.getFloat("users/budi/beban2/data1/menit30"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit30", Firebase.getFloat("users/budi/beban2/data1/menit20"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit20", Firebase.getFloat("users/budi/beban2/data1/menit10"));
+    //Firebase.setFloat("users/budi/beban2/data1/menit10", Firebase.getFloat("users/budi/beban2/data1/daya"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit60", Firebase.getFloat("users/budi/beban3/data1/menit50"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit50", Firebase.getFloat("users/budi/beban3/data1/menit40"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit40", Firebase.getFloat("users/budi/beban3/data1/menit30"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit30", Firebase.getFloat("users/budi/beban3/data1/menit20"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit20", Firebase.getFloat("users/budi/beban3/data1/menit10"));
+    //Firebase.setFloat("users/budi/beban3/data1/menit10", Firebase.getFloat("users/budi/beban3/data1/daya"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit60", Firebase.getFloat("users/budi/beban4/data1/menit50"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit50", Firebase.getFloat("users/budi/beban4/data1/menit40"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit40", Firebase.getFloat("users/budi/beban4/data1/menit30"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit30", Firebase.getFloat("users/budi/beban4/data1/menit20"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit20", Firebase.getFloat("users/budi/beban4/data1/menit10"));
+    //Firebase.setFloat("users/budi/beban4/data1/menit10", Firebase.getFloat("users/budi/beban4/data1/daya"));
     Firebase.setFloat("users/budi/beban1/data1/daya", daya1);
     Firebase.setFloat("users/budi/beban2/data1/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data1/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data1/daya", daya4);
   }
   else{
-    Firebase.setFloat("users/budi/beban1/data2/menit60", Firebase.getFloat("users/budi/beban1/data2/menit50"));
-    Firebase.setFloat("users/budi/beban1/data2/menit50", Firebase.getFloat("users/budi/beban1/data2/menit40"));
-    Firebase.setFloat("users/budi/beban1/data2/menit40", Firebase.getFloat("users/budi/beban1/data2/menit30"));
-    Firebase.setFloat("users/budi/beban1/data2/menit30", Firebase.getFloat("users/budi/beban1/data2/menit20"));
-    Firebase.setFloat("users/budi/beban1/data2/menit20", Firebase.getFloat("users/budi/beban1/data2/menit10"));
-    Firebase.setFloat("users/budi/beban1/data2/menit10", Firebase.getFloat("users/budi/beban1/data2/daya"));
-    Firebase.setFloat("users/budi/beban2/data2/menit60", Firebase.getFloat("users/budi/beban2/data2/menit50"));
-    Firebase.setFloat("users/budi/beban2/data2/menit50", Firebase.getFloat("users/budi/beban2/data2/menit40"));
-    Firebase.setFloat("users/budi/beban2/data2/menit40", Firebase.getFloat("users/budi/beban2/data2/menit30"));
-    Firebase.setFloat("users/budi/beban2/data2/menit30", Firebase.getFloat("users/budi/beban2/data2/menit20"));
-    Firebase.setFloat("users/budi/beban2/data2/menit20", Firebase.getFloat("users/budi/beban2/data2/menit10"));
-    Firebase.setFloat("users/budi/beban2/data2/menit10", Firebase.getFloat("users/budi/beban2/data2/daya"));
-    Firebase.setFloat("users/budi/beban3/data2/menit60", Firebase.getFloat("users/budi/beban3/data2/menit50"));
-    Firebase.setFloat("users/budi/beban3/data2/menit50", Firebase.getFloat("users/budi/beban3/data2/menit40"));
-    Firebase.setFloat("users/budi/beban3/data2/menit40", Firebase.getFloat("users/budi/beban3/data2/menit30"));
-    Firebase.setFloat("users/budi/beban3/data2/menit30", Firebase.getFloat("users/budi/beban3/data2/menit20"));
-    Firebase.setFloat("users/budi/beban3/data2/menit20", Firebase.getFloat("users/budi/beban3/data2/menit10"));
-    Firebase.setFloat("users/budi/beban3/data2/menit10", Firebase.getFloat("users/budi/beban3/data2/daya"));
-    Firebase.setFloat("users/budi/beban4/data2/menit60", Firebase.getFloat("users/budi/beban4/data2/menit50"));
-    Firebase.setFloat("users/budi/beban4/data2/menit50", Firebase.getFloat("users/budi/beban4/data2/menit40"));
-    Firebase.setFloat("users/budi/beban4/data2/menit40", Firebase.getFloat("users/budi/beban4/data2/menit30"));
-    Firebase.setFloat("users/budi/beban4/data2/menit30", Firebase.getFloat("users/budi/beban4/data2/menit20"));
-    Firebase.setFloat("users/budi/beban4/data2/menit20", Firebase.getFloat("users/budi/beban4/data2/menit10"));
-    Firebase.setFloat("users/budi/beban4/data2/menit10", Firebase.getFloat("users/budi/beban4/data2/daya"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit60", Firebase.getFloat("users/budi/beban1/data2/menit50"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit50", Firebase.getFloat("users/budi/beban1/data2/menit40"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit40", Firebase.getFloat("users/budi/beban1/data2/menit30"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit30", Firebase.getFloat("users/budi/beban1/data2/menit20"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit20", Firebase.getFloat("users/budi/beban1/data2/menit10"));
+    //Firebase.setFloat("users/budi/beban1/data2/menit10", Firebase.getFloat("users/budi/beban1/data2/daya"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit60", Firebase.getFloat("users/budi/beban2/data2/menit50"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit50", Firebase.getFloat("users/budi/beban2/data2/menit40"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit40", Firebase.getFloat("users/budi/beban2/data2/menit30"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit30", Firebase.getFloat("users/budi/beban2/data2/menit20"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit20", Firebase.getFloat("users/budi/beban2/data2/menit10"));
+    //Firebase.setFloat("users/budi/beban2/data2/menit10", Firebase.getFloat("users/budi/beban2/data2/daya"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit60", Firebase.getFloat("users/budi/beban3/data2/menit50"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit50", Firebase.getFloat("users/budi/beban3/data2/menit40"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit40", Firebase.getFloat("users/budi/beban3/data2/menit30"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit30", Firebase.getFloat("users/budi/beban3/data2/menit20"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit20", Firebase.getFloat("users/budi/beban3/data2/menit10"));
+    //Firebase.setFloat("users/budi/beban3/data2/menit10", Firebase.getFloat("users/budi/beban3/data2/daya"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit60", Firebase.getFloat("users/budi/beban4/data2/menit50"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit50", Firebase.getFloat("users/budi/beban4/data2/menit40"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit40", Firebase.getFloat("users/budi/beban4/data2/menit30"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit30", Firebase.getFloat("users/budi/beban4/data2/menit20"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit20", Firebase.getFloat("users/budi/beban4/data2/menit10"));
+    //Firebase.setFloat("users/budi/beban4/data2/menit10", Firebase.getFloat("users/budi/beban4/data2/daya"));
     Firebase.setFloat("users/budi/beban1/data2/daya", daya1);
     Firebase.setFloat("users/budi/beban2/data2/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data2/daya", daya3);
