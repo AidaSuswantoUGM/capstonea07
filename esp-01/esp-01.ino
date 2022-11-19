@@ -19,55 +19,76 @@ void setup() {
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
   Serial.begin(115200);
 }
-// normally open
-// lampu nyala --> timer jalan
-// if switch = true  --> nyala (aon, bon, con, don)
-//                   --> timer jalan (read time)
+/* normally open
+ * lampu nyala --> timer jalan 
+ * if switch = true  --> nyala (aon, bon, con, don)
+ *                   --> timer jalan (read time)
+ */                 
+
 void loop() {
-  s1=Firebase.getBool("users/budi/beban1/switch");
-  s2=Firebase.getBool("users/budi/beban2/switch");
-  s3=Firebase.getBool("users/budi/beban3/switch");
-  s4=Firebase.getBool("users/budi/beban4/switch");
-  
-  // ini kode dibawah utk nentuin time nya ditaruh di penggunaan (data1) atau pemborosan (data2)
-  // adaorang = baca variabel ada orang dr firebase
-  // data = "data1" (string)
-  // if adaorang = true --> data = "data1"
-  
-  // t1 = baca data waktu di firebase "users/budi/beban1/(data1 / data 2)/time"
-  // t2 = baca data waktu di firebase "users/budi/beban2/(data1 / data 2)/time"
-  // t3 = baca data waktu di firebase "users/budi/beban3/(data1 / data 2)/time"
-  // t4 = baca data waktu di firebase "users/budi/beban4/(data1 / data 2)/time"
-  
-  // adaorang = Firebase.getBool("users/budi/adaorang")
-  // if (adaorang = true ) {// ada orang ni --> alat2 nyala normal --> wireless witch nyala
-  // AIDA AKU BIKIN FLOWCHARTNYA AJA YAK
-  
+
+  // definisikan user
+  String user = "budi"
+
+  // cek variabel ada orang
+  String path_adaorang = "users/"+user+"/adaorang" ;
+  adaorang=Firebase.getBool(path_adaorang);
+  if(adaorang==true) {
+    String data = "data1" ;
+  } else {
+    String data = "data2" ;
+  }
+
+  // baca switch, dan kalkulasi time 
+  s1=Firebase.getBool("users/"+user+"/beban1/switch");
+  s2=Firebase.getBool("users/"+user+"/beban2/switch");
+  s3=Firebase.getBool("users/"+user+"/beban3/switch");
+  s4=Firebase.getBool("users/"+user+"/beban4/switch");
+
+  // switch 1 == true, alat nyala, timer jalan
   if(s1==true){
     Serial.write(aon, sizeof(aon));
-  }
-  if(s1==false){
+    String time_path = "users/" + user + "/beban1/" + data + "/time" ;
+    time1 = Firebase.getInt(time_path) ;
+    int time = time1 + 1;
+    Firebase.setInt(time_path, time) ;
+  } else {
     Serial.write(aof, sizeof(aof));
   }
   delay(400);
+
+  // switch 2 == true, alat nyala, timer jalan
   if(s2==true){
     Serial.write(bon, sizeof(bon));
-  }
-  if(s2==false){
+    String time_path = "users/" + user + "/beban2/" + data + "/time" ;
+    time2 = Firebase.getInt(time_path) ;
+    int time = time2 + 1;
+    Firebase.setInt(time_path, time) ;
+  } else {
     Serial.write(bof, sizeof(bof));
   }
   delay(400);
+
+  // switch 3 == true, alat nyala, timer jalan
   if(s3==true){
     Serial.write(con, sizeof(con));
-  }
-  if(s3==false){
+    String time_path = "users/" + user + "/beban3/" + data + "/time" ;
+    time3 =Firebase.getInt(time_path) ;
+    int time = time3 + 1;
+    Firebase.setInt(time_path, time) ;
+  } else {
     Serial.write(cof, sizeof(cof));
   }
   delay(400);
+
+  // switch 4 == true, alat nyala, timer jalan
   if(s4==true){
     Serial.write(don, sizeof(don));
-  }
-  if(s4==false){
+    String time_path = "users/" + user + "/beban4/" + data + "/time" ;
+    time4 = Firebase.getInt(time_path) ;
+    int time = time4 + 1;
+    Firebase.setInt(time_path, time) ;
+  } else {
     Serial.write(dof, sizeof(dof));
   }
   delay(400);
