@@ -95,20 +95,36 @@ void loop() {
     Firebase.setFloat("users/budi/beban2/data1/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data1/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data1/daya", daya4);
-    Firebase.setFloat("users/budi/beban1/data1/biaya", Firebase.getFloat("users/budi/beban1/data1/biaya")+daya1/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban2/data1/biaya", Firebase.getFloat("users/budi/beban2/data1/biaya")+daya2/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban3/data1/biaya", Firebase.getFloat("users/budi/beban3/data1/biaya")+daya3/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban4/data1/biaya", Firebase.getFloat("users/budi/beban4/data1/biaya")+daya4/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
+    if(s1){
+      Firebase.setInt("users/budi/beban1/data1/time", Firebase.getInt("users/budi/beban1/data1/time")+1);
+    }
+    if(s2){
+      Firebase.setInt("users/budi/beban2/data1/time", Firebase.getInt("users/budi/beban2/data1/time")+1);
+    }
+    if(s3){
+      Firebase.setInt("users/budi/beban3/data1/time", Firebase.getInt("users/budi/beban3/data1/time")+1);
+    }
+    if(s4){
+      Firebase.setInt("users/budi/beban4/data1/time", Firebase.getInt("users/budi/beban4/data1/time")+1);
+    }
   }
   else{
     Firebase.setFloat("users/budi/beban1/data2/daya", daya1);
     Firebase.setFloat("users/budi/beban2/data2/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data2/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data2/daya", daya4);
-    Firebase.setFloat("users/budi/beban1/data2/biaya", Firebase.getFloat("users/budi/beban1/data2/biaya")+daya1/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban2/data2/biaya", Firebase.getFloat("users/budi/beban2/data2/biaya")+daya2/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban3/data2/biaya", Firebase.getFloat("users/budi/beban3/data2/biaya")+daya3/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
-    Firebase.setFloat("users/budi/beban4/data2/biaya", Firebase.getFloat("users/budi/beban4/data2/biaya")+daya4/3600/1000*Firebase.getInt("location/Yogyakarta/golongan/900VA/harga"));
+    if(s1){
+      Firebase.setInt("users/budi/beban1/data2/time", Firebase.getInt("users/budi/beban1/data2/time")+1);
+    }
+    if(s2){
+      Firebase.setInt("users/budi/beban2/data2/time", Firebase.getInt("users/budi/beban2/data2/time")+1);
+    }
+    if(s3){
+      Firebase.setInt("users/budi/beban3/data2/time", Firebase.getInt("users/budi/beban3/data2/time")+1);
+    }
+    if(s4){
+      Firebase.setInt("users/budi/beban4/data2/time", Firebase.getInt("users/budi/beban4/data2/time")+1);
+    }
   }
   delay(1000);
 }
