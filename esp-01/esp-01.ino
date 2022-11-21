@@ -48,10 +48,6 @@ void loop() {
   // switch 1 == true, alat nyala, timer jalan
   if(s1==true){
     Serial.write(aon, sizeof(aon));
-    String time_path = "users/" + user + "/beban1/" + data + "/time" ;
-    int time1 = Firebase.getInt(time_path) ;
-    int time = time1 + 1;
-    Firebase.setInt(time_path, time) ;
   } else {
     Serial.write(aof, sizeof(aof));
   }
@@ -60,10 +56,6 @@ void loop() {
   // switch 2 == true, alat nyala, timer jalan
   if(s2==true){
     Serial.write(bon, sizeof(bon));
-    String time_path = "users/" + user + "/beban2/" + data + "/time" ;
-    int time2 = Firebase.getInt(time_path) ;
-    int time = time2 + 1;
-    Firebase.setInt(time_path, time) ;
   } else {
     Serial.write(bof, sizeof(bof));
   }
@@ -72,10 +64,6 @@ void loop() {
   // switch 3 == true, alat nyala, timer jalan
   if(s3==true){
     Serial.write(con, sizeof(con));
-    String time_path = "users/" + user + "/beban3/" + data + "/time" ;
-    int time3 =Firebase.getInt(time_path) ;
-    int time = time3 + 1;
-    Firebase.setInt(time_path, time) ;
   } else {
     Serial.write(cof, sizeof(cof));
   }
@@ -84,10 +72,6 @@ void loop() {
   // switch 4 == true, alat nyala, timer jalan
   if(s4==true){
     Serial.write(don, sizeof(don));
-    String time_path = "users/" + user + "/beban4/" + data + "/time" ;
-    int time4 = Firebase.getInt(time_path) ;
-    int time = time4 + 1;
-    Firebase.setInt(time_path, time) ;
   } else {
     Serial.write(dof, sizeof(dof));
   }
