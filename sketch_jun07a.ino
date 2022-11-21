@@ -3,13 +3,11 @@
 #include<ESP8266WiFi.h>
 #include<FirebaseArduino.h>
 #include<wpa2_enterprise.h>
-
  
 #define FIREBASE_HOST "capstonea07-default-rtdb.firebaseio.com"
 #define FIREBASE_AUTH "z2LkpOQOm2qjaP1s8h2BPggQq9T9twBwNzSILnAi"
 
-//#define PZEM_RX_PIN D5
-//#define PZEM_TX_PIN D6
+bool s1,s2,s3,s4;
 
 //char ssid[] = "UGM-Secure";
 //char username[] = "suswanto.aida";
@@ -88,17 +86,45 @@ void loop() {
     Firebase.setBool("users/budi/adaorang", false);
     orang=false;
   }
+  s1=Firebase.getBool("users/budi/beban1/switch");
+  s2=Firebase.getBool("users/budi/beban2/switch");
+  s3=Firebase.getBool("users/budi/beban3/switch");
+  s4=Firebase.getBool("users/budi/beban4/switch");
   if(orang){
     Firebase.setFloat("users/budi/beban1/data1/daya", daya1);
     Firebase.setFloat("users/budi/beban2/data1/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data1/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data1/daya", daya4);
+    if(s1){
+      Firebase.setInt("users/budi/beban1/data1/time", Firebase.getInt(u"sers/budi/beban1/data1/time")+1)
+    }
+    if(s2){
+      Firebase.setInt("users/budi/beban2/data1/time", Firebase.getInt(u"sers/budi/beban2/data1/time")+1)
+    }
+    if(s3){
+      Firebase.setInt("users/budi/beban3/data1/time", Firebase.getInt(u"sers/budi/beban3/data1/time")+1)
+    }
+    if(s4){
+      Firebase.setInt("users/budi/beban4/data1/time", Firebase.getInt("users/budi/beban4/data1/time")+1)
+    }
   }
   else{
     Firebase.setFloat("users/budi/beban1/data2/daya", daya1);
     Firebase.setFloat("users/budi/beban2/data2/daya", daya2);
     Firebase.setFloat("users/budi/beban3/data2/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data2/daya", daya4);
+    if(s1){
+      Firebase.setInt("users/budi/beban1/data2/time", Firebase.getInt(u"sers/budi/beban1/data2/time")+1)
+    }
+    if(s2){
+      Firebase.setInt("users/budi/beban2/data2/time", Firebase.getInt(u"sers/budi/beban2/data2/time")+1)
+    }
+    if(s3){
+      Firebase.setInt("users/budi/beban3/data2/time", Firebase.getInt(u"sers/budi/beban3/data2/time")+1)
+    }
+    if(s4){
+      Firebase.setInt("users/budi/beban4/data2/time", Firebase.getInt("users/budi/beban4/data2/time")+1)
+    }
   }
   delay(1000);
 }
