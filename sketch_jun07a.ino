@@ -96,16 +96,16 @@ void loop() {
     Firebase.setFloat("users/budi/beban3/data1/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data1/daya", daya4);
     if(s1){
-      Firebase.setInt("users/budi/beban1/data1/time", Firebase.getInt(u"sers/budi/beban1/data1/time")+1)
+      Firebase.setInt("users/budi/beban1/data1/time", Firebase.getInt("users/budi/beban1/data1/time")+1);
     }
     if(s2){
-      Firebase.setInt("users/budi/beban2/data1/time", Firebase.getInt(u"sers/budi/beban2/data1/time")+1)
+      Firebase.setInt("users/budi/beban2/data1/time", Firebase.getInt("users/budi/beban2/data1/time")+1);
     }
     if(s3){
-      Firebase.setInt("users/budi/beban3/data1/time", Firebase.getInt(u"sers/budi/beban3/data1/time")+1)
+      Firebase.setInt("users/budi/beban3/data1/time", Firebase.getInt("users/budi/beban3/data1/time")+1);
     }
     if(s4){
-      Firebase.setInt("users/budi/beban4/data1/time", Firebase.getInt("users/budi/beban4/data1/time")+1)
+      Firebase.setInt("users/budi/beban4/data1/time", Firebase.getInt("users/budi/beban4/data1/time")+1);
     }
   }
   else{
@@ -114,16 +114,16 @@ void loop() {
     Firebase.setFloat("users/budi/beban3/data2/daya", daya3);
     Firebase.setFloat("users/budi/beban4/data2/daya", daya4);
     if(s1){
-      Firebase.setInt("users/budi/beban1/data2/time", Firebase.getInt(u"sers/budi/beban1/data2/time")+1)
+      Firebase.setInt("users/budi/beban1/data2/time", Firebase.getInt("users/budi/beban1/data2/time")+1);
     }
     if(s2){
-      Firebase.setInt("users/budi/beban2/data2/time", Firebase.getInt(u"sers/budi/beban2/data2/time")+1)
+      Firebase.setInt("users/budi/beban2/data2/time", Firebase.getInt("users/budi/beban2/data2/time")+1);
     }
     if(s3){
-      Firebase.setInt("users/budi/beban3/data2/time", Firebase.getInt(u"sers/budi/beban3/data2/time")+1)
+      Firebase.setInt("users/budi/beban3/data2/time", Firebase.getInt("users/budi/beban3/data2/time")+1);
     }
     if(s4){
-      Firebase.setInt("users/budi/beban4/data2/time", Firebase.getInt("users/budi/beban4/data2/time")+1)
+      Firebase.setInt("users/budi/beban4/data2/time", Firebase.getInt("users/budi/beban4/data2/time")+1);
     }
   }
   delay(1000);
