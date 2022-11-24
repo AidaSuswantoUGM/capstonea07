@@ -12,6 +12,9 @@ Github for Capstone A07 2022
 
 This project is used to monitor and control electric power in a room. This project uses 4 PZEM-004t v3 sensors to monitor electric power, a WEMOS D1 R1 to connect sensors to the database, Firebase Realtime Database to store data, and ESP-01/ESP8266 four ways wifi relay for controlling electric power.
 
+## Mobile App
+Arlin App Github Link : https://github.com/ayuwidyatidiah85/ArlinProject
+
 ## Library used
 | Library    | Description |
 |------------|-------------|
